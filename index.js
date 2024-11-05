@@ -34,7 +34,7 @@ class Spotify {
 }
 
 async function spotify(url) {
-        try {
+try {
     const client = new Spotify()
     const { gid, id } = await client.Download(url)
     const result = await client.getTask(gid, id)
