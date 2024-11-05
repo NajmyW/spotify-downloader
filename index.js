@@ -17,6 +17,7 @@ class Spotify {
     }
 }
     async getTask(gid, id) {
+        try {
         const response = (await axios.get("https://api.fabdl.com/spotify/mp3-convert-task/" + gid + "/" + id, {
             headers: {
                 origin:
@@ -26,7 +27,10 @@ class Spotify {
             }
         })).data
         return 'https://api.fabdl.com' + response.result.download_url
+    } catch (e) {        
+        return e.message
     }
+}
 }
 
 async function spotify(url) {
