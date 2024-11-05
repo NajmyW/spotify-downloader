@@ -34,11 +34,15 @@ class Spotify {
 }
 
 async function spotify(url) {
+        try {
     const client = new Spotify()
     const { gid, id } = await client.Download(url)
     const result = await client.getTask(gid, id)
     console.log(result)
     return result
+ } catch (e) {        
+    return e.message
+ }
 }
 
 // spotify("https://open.spotify.com/track/7Lm4S2P0MHwBktcdNILLQA?si=3095c979c84e4318")
