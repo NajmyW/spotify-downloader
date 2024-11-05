@@ -2,6 +2,7 @@ const axios = require("axios")
 
 class Spotify {
     async Download(url) {
+        try {
         const response = (await axios.get("https://api.fabdl.com/spotify/get?url=" + url, {
             headers: {
                 origin:
@@ -11,7 +12,10 @@ class Spotify {
             }
         })).data
         return response.result
+    } catch (e) {        
+        return e.message
     }
+}
     async getTask(gid, id) {
         const response = (await axios.get("https://api.fabdl.com/spotify/mp3-convert-task/" + gid + "/" + id, {
             headers: {
